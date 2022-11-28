@@ -1,4 +1,5 @@
-let canvas = document.getElementById("Canvas");
+let canvas = document.querySelector("#Canvas");
+let score = document.querySelector("#score");
 
 let context = canvas.getContext("2d");
 
@@ -9,26 +10,25 @@ gradient.addColorStop(1, "white");
 // Fill with gradient
 context.fillStyle = gradient;
 context.fillRect(0, 0, 400, 400);
+let temScore = 0;
+score.textContent = `score: ${temScore}`;
 
 function Snake() {
-
     const random_num = (min, max) =>{
         return Math.round((Math.random() * (max-min) + min));
       }
 
     // defing some styling colors for snake body and border
-    const colors =["red", "blue", "orange", "magenta", "purple","yellow", "black"]
+    const colors =["red", "lightblue", "orange", "magenta", "purple","yellow", "grey", "lightgreen"]
     const boardColor = 'black';
     let appleColor;
     let snakeBodyColor;
    
-    const changeAppleColor = () =>{
-        
-        appleColor = colors[random_num(3,6)];
-        console.log(appleColor);
+    const changeAppleColor = () =>{    
+        appleColor = colors[random_num(0,7)];
     }
     const changeSnakeColor = () => {
-        snakeBodyColor = colors[random_num(0,6)];
+        snakeBodyColor = colors[random_num(0,7)];
         if (snakeBodyColor == appleColor) {
             changeSnakeColor();
         }
@@ -190,6 +190,8 @@ function Snake() {
         snakebody.unshift(head);
         const hasEatenFood =snakebody[0].x === food_x && snakebody[0].y === food_y;
         if (hasEatenFood) {
+            temScore += 1;
+            score.textContent = `score: ${temScore}`;
             genFood();
         }
         else{
