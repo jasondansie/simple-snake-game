@@ -4,7 +4,7 @@
 
 ### this is based off of code from Kalwar Santosh found at https://github.com/kalwar/Snake-game 
 
-## Code refactoring
+## Code refactoring and changes:
 - chaged the canvas size and color
 - made the snake change colors
 - gave snake ability to eat apples
@@ -12,6 +12,6 @@
 - added food generation
 
 ### Things we wanted to do but run out of time for:
--add an end screen
--create a win condition
--level difficulties
+- add an end screen
+- create a win condition
+- level difficulties
